@@ -1,0 +1,7 @@
+{
+  "name": "ionis-project",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
