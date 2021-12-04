@@ -7,23 +7,21 @@
     ion-button {
         border-radius: 10px;
         width: 95%;
-        margin: 10px 0;
+        margin: 5px 0;
     }
     
     .top-container {
         display: flex;
         justify-content: center;
-        align-items: center;
         width: 100%;
         position: absolute;
-        top: 1%;
         height: 100px;
     }
     
     .icon {
         fill: #396C83;
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 80px;
     }
     
     .flex-container {

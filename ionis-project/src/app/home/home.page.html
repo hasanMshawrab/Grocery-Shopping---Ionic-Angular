@@ -1,7 +1,7 @@
-<ion-header [translucent]="true">
+<ion-header>
     <ion-toolbar>
         <ion-title>
-            Home
+            Categories
         </ion-title>
         <ion-buttons slot="start">
             <ion-back-button defaultHref="login"></ion-back-button>
@@ -9,15 +9,66 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-        <ion-toolbar>
-            <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-    </ion-header>
-
+<ion-content>
     <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <ion-card style="--background: rgba(255, 201, 71, 0.72);;" (click)="login()">
+            <ion-card-header>
+                <ion-card-title>Beverages</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                Water, Drinks, Soda, etc...
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card style="--background: rgba(239, 239, 239, 0.72);;">
+            <ion-card-header>
+                <ion-card-title>Bread/Bakery</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                Bread, Bakery, Toast, french bread, etc...
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card style="--background: rgba(255, 188, 188, 0.72);">
+            <ion-card-header>
+                <ion-card-title>Cleaners</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                Household care, Fairy, Easy, towel, etc...
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card style="--background: rgba(181, 234, 234, 0.72);">
+            <ion-card-header>
+                <ion-card-title>Dairy</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                Milk, Butter, Cheese, etc...
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card style="--background: rgba(0, 234, 211, 0.72);">
+            <ion-card-header>
+                <ion-card-title>Meat</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                Lunch Meat, Poultry, Beef, Psork, etc...
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card style="--background: rgba(255, 68, 159, 0.72);">
+            <ion-card-header>
+                <ion-card-title>Produce</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                Fruits, Vegetables, etc...
+            </ion-card-content>
+        </ion-card>
     </div>
 </ion-content>
