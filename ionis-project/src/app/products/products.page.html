@@ -1,9 +1,13 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>products</ion-title>
+        <ion-title>
+            Products
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
-
 <ion-content>
 
     <ion-searchbar showCancelButton="focus"></ion-searchbar>
@@ -14,23 +18,95 @@
             <ion-select-option value="lowPrice">Low Price</ion-select-option>
             <ion-select-option value="highPrice">High Price</ion-select-option>
             <ion-select-option value="discounts">Discounts</ion-select-option>
-            <ion-select-option value="lowRate">Low Rate</ion-select-option>
-            <ion-select-option value="highRate">High Rate</ion-select-option>
+            <ion-select-option value="lowRate">Lowest Selling</ion-select-option>
+            <ion-select-option value="highRate">Best Seller</ion-select-option>
         </ion-select>
     </ion-item>
 
     <div>
         <ion-card>
-            <ion-item>
-                <div style="width: 100px; height: 100px;"><img src="./../../assets/homeBG.jpg" alt="" style="height: 90px; width: 90px;"></div>
-                <ion-label>ion-item in a card, icon left, button right</ion-label>
-                <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
-            </ion-item>
+            <div class="top-container">
+                <ion-item>
+                    <div class="discount-div" style="visibility: hidden;">
+                        <p>20%</p>
+                    </div>
+                    <div class="image-div"><img src="./../../assets/beverages/H2 Oh! Lightly Sparkling Water Tangerine Flavor with 7up 330ml - sugar free.jpg" alt=""></div>
+                    <div class="info-div">
+                        <div class="pricing-div">
+                            <ion-label>15,000 L.L.</ion-label>
+                        </div>
+                        <div class="quantity-div">
+                            <ion-item>
+                                <ion-label position="floating">Quantity</ion-label>
+                                <ion-input type="number" onkeypress="return event.charCode >= 48" min="0" placeholder="e.g. 2"></ion-input>
+                            </ion-item>
+                        </div>
+                    </div>
+                </ion-item>
+            </div>
 
             <ion-card-content>
-                This is content, without any paragraph or header tags, within an ion-card-content element.
+                H2 Oh! Lightly Sparkling Water Tangerine Flavor with 7up 330ml - sugar free
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <div class="top-container">
+                <ion-item>
+                    <div class="discount-div" style="visibility: hidden;">
+                        <p>20%</p>
+                    </div>
+                    <div class="image-div"><img src="./../../assets/beverages/Yamama Rose Water 750ml.jpg" alt=""></div>
+                    <div class="info-div">
+                        <div class="pricing-div">
+                            <ion-label>15,000 L.L.</ion-label>
+                        </div>
+                        <div class="quantity-div">
+                            <ion-item>
+                                <ion-label position="floating">Quantity</ion-label>
+                                <ion-input type="number" onkeypress="return event.charCode >= 48" min="0" placeholder="e.g. 2"></ion-input>
+                            </ion-item>
+                        </div>
+                    </div>
+                </ion-item>
+            </div>
+
+            <ion-card-content>
+                Yamama Rose Water 750ml
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <div class="top-container">
+                <ion-item>
+                    <div class="discount-div" style="visibility: hidden;">
+                        <p>20%</p>
+                    </div>
+                    <div class="image-div"><img src="./../../assets/beverages/Cortas Rose Water 300ml.jpg" alt=""></div>
+                    <div class="info-div">
+                        <div class="pricing-div">
+                            <ion-label>15,000 L.L.</ion-label>
+                        </div>
+                        <div class="quantity-div">
+                            <ion-item>
+                                <ion-label position="floating">Quantity</ion-label>
+                                <ion-input type="number" onkeypress="return event.charCode >= 48" min="0" placeholder="e.g. 2"></ion-input>
+                            </ion-item>
+                        </div>
+                    </div>
+                </ion-item>
+            </div>
+
+            <ion-card-content>
+                Cortas Rose Water 300ml
             </ion-card-content>
         </ion-card>
     </div>
-
 </ion-content>
+
+
+
+
+<!-- <ion-icon name="add-circle-outline"></ion-icon>
+<ion-icon name="remove-circle-outline"></ion-icon>
+<ion-badge color="success">100</ion-badge> -->

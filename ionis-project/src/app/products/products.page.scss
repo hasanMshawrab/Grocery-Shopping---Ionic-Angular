@@ -1,4 +1,73 @@
-// img {
-//     width: 50px;
-//     height: 50px;
-// }
+img {
+    width: auto;
+    max-height: 100%;
+    border-radius: 20px;
+}
+
+ion-icon {
+    font-size: 30px;
+    color: #00EAD3;
+}
+
+ion-badge {
+    margin-left: 10px;
+}
+
+.top-container {
+    position: relative;
+    width: 100%;
+}
+
+.discount-div {
+    background-color: red;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    visibility: visible;
+}
+
+.image-div {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00EAD3;
+    border-radius: 20px;
+    margin: 10px 20px 10px 0;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+}
+
+.info-div {
+    position: relative;
+    width: 130px;
+    height: 100px;
+}
+
+.pricing-div {
+    position: absolute;
+    top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.quantity-div {
+    position: absolute;
+    display: flex;
+    top: 40px;
+}
+
+.rating-div {
+    position: absolute;
+    top: 60px;
+}
