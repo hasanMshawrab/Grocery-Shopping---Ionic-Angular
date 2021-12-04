@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>products</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-searchbar showCancelButton="focus"></ion-searchbar>
+    <ion-item>
+        <ion-label>Filter</ion-label>
+        <ion-select value="none">
+            <ion-select-option value="none">none</ion-select-option>
+            <ion-select-option value="lowPrice">Low Price</ion-select-option>
+            <ion-select-option value="highPrice">High Price</ion-select-option>
+            <ion-select-option value="discounts">Discounts</ion-select-option>
+            <ion-select-option value="lowRate">Low Rate</ion-select-option>
+            <ion-select-option value="highRate">High Rate</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <div>
+        <ion-card>
+            <ion-item>
+                <div style="width: 100px; height: 100px;"><img src="./../../assets/homeBG.jpg" alt="" style="height: 90px; width: 90px;"></div>
+                <ion-label>ion-item in a card, icon left, button right</ion-label>
+                <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+            </ion-item>
+
+            <ion-card-content>
+                This is content, without any paragraph or header tags, within an ion-card-content element.
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+</ion-content>

@@ -11,7 +11,7 @@ export class HomePage {
   constructor(private router: Router) {}
 
   public login(){
-    this.router.navigate(["login"]);
+    this.router.navigate(["products"]);
   }
 
 }
