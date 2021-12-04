@@ -1,0 +1,27 @@
+ion-header {
+    --background: yellow;
+}
+
+ion-content {
+    --background: URL("./../../assets/loginBG.jpg") no-repeat 0/180% 100%;
+}
+
+ion-item,
+ion-button {
+    border-radius: 10px;
+    width: 90%;
+    margin: 5px 0;
+}
+
+.flex-container {
+    // background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 60%;
+    // height: 70%;
+    // margin: 300px 0;
+}
