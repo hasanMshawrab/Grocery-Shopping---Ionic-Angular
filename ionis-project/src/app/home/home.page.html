@@ -11,7 +11,7 @@
 
 <ion-content>
     <div id="container">
-        <ion-card style="--background: rgba(255, 201, 71, 0.72);;" (click)="login()">
+        <ion-card style="--background: rgba(255, 201, 71, 0.72);;" (click)="action('beverages')">
             <ion-card-header>
                 <ion-card-title>Beverages</ion-card-title>
             </ion-card-header>
@@ -21,7 +21,7 @@
             </ion-card-content>
         </ion-card>
 
-        <ion-card style="--background: rgba(239, 239, 239, 0.72);;">
+        <ion-card style="--background: rgba(239, 239, 239, 0.72);;" (click)="action('Bread/Bakery')">
             <ion-card-header>
                 <ion-card-title>Bread/Bakery</ion-card-title>
             </ion-card-header>
@@ -31,7 +31,7 @@
             </ion-card-content>
         </ion-card>
 
-        <ion-card style="--background: rgba(255, 188, 188, 0.72);">
+        <ion-card style="--background: rgba(255, 188, 188, 0.72);" (click)="action('Cleaners')">
             <ion-card-header>
                 <ion-card-title>Cleaners</ion-card-title>
             </ion-card-header>
@@ -41,7 +41,7 @@
             </ion-card-content>
         </ion-card>
 
-        <ion-card style="--background: rgba(181, 234, 234, 0.72);">
+        <ion-card style="--background: rgba(181, 234, 234, 0.72);" (click)="action('Dairy')">
             <ion-card-header>
                 <ion-card-title>Dairy</ion-card-title>
             </ion-card-header>
@@ -51,7 +51,7 @@
             </ion-card-content>
         </ion-card>
 
-        <ion-card style="--background: rgba(0, 234, 211, 0.72);">
+        <ion-card style="--background: rgba(0, 234, 211, 0.72);" (click)="action('Meat')">
             <ion-card-header>
                 <ion-card-title>Meat</ion-card-title>
             </ion-card-header>
@@ -61,7 +61,7 @@
             </ion-card-content>
         </ion-card>
 
-        <ion-card style="--background: rgba(255, 68, 159, 0.72);">
+        <ion-card style="--background: rgba(255, 68, 159, 0.72);" (click)="action('Produce')">
             <ion-card-header>
                 <ion-card-title>Produce</ion-card-title>
             </ion-card-header>
@@ -70,5 +70,9 @@
                 Fruits, Vegetables, etc...
             </ion-card-content>
         </ion-card>
+    </div>
+
+    <div class="spinner-container" *ngIf="show">
+        <ion-spinner name="lines"></ion-spinner>
     </div>
 </ion-content>

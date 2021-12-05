@@ -10,97 +10,53 @@
 </ion-header>
 
 <ion-content>
-    <ion-searchbar showCancelButton="focus"></ion-searchbar>
+    <ion-searchbar showCancelButton="focus" (ionChange)="serchValue($event)"></ion-searchbar>
     <ion-item>
         <ion-label>Filter</ion-label>
-        <ion-select value="none">
+        <ion-select value="none" (ionChange)="selected($event)">
             <ion-select-option value="none">none</ion-select-option>
             <ion-select-option value="lowPrice">Low Price</ion-select-option>
             <ion-select-option value="highPrice">High Price</ion-select-option>
             <ion-select-option value="discounts">Discounts</ion-select-option>
-            <ion-select-option value="lowRate">Lowest Selling</ion-select-option>
-            <ion-select-option value="highRate">Best Seller</ion-select-option>
         </ion-select>
     </ion-item>
 
     <div>
-        <ion-card>
-            <div class="top-container">
-                <ion-item>
-                    <div class="discount-div" style="visibility: hidden;">
-                        <p>20%</p>
-                    </div>
-                    <div class="image-div"><img src="./../../assets/beverages/H2 Oh! Lightly Sparkling Water Tangerine Flavor with 7up 330ml - sugar free.jpg" alt=""></div>
-                    <div class="info-div">
-                        <div class="pricing-div">
-                            <ion-label>15,000 L.L.</ion-label>
-                        </div>
-                        <div class="quantity-div">
-                            <ion-item>
-                                <ion-label position="floating">Quantity</ion-label>
-                                <ion-input type="number" onkeypress="return event.charCode >= 48" min="0" placeholder="e.g. 2"></ion-input>
-                            </ion-item>
-                        </div>
-                    </div>
-                </ion-item>
-            </div>
 
-            <ion-card-content>
-                H2 Oh! Lightly Sparkling Water Tangerine Flavor with 7up 330ml - sugar free
-            </ion-card-content>
+        <ion-card *ngFor="let product of products">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f, product.product_id)">
+                <div class="top-container">
+                    <ion-item>
+                        <div class="discount-div" *ngIf="product.visibility">
+                            <p>{{product.discount}}%</p>
+                        </div>
+                        <div class="image-div"><img src="./../../assets/beverages/{{product.image}}" alt=""></div>
+                        <div class="info-div">
+                            <div class="pricing-div" *ngIf="!product.visibility">
+                                <ion-label>{{product.final_price}} L.L.</ion-label>
+                            </div>
+                            <div class="pricing-div" *ngIf="product.visibility" style="color: red;">
+                                <ion-label>{{product.final_price}} L.L.</ion-label>
+                            </div>
+                            <div class="quantity-div">
+                                <ion-item>
+                                    <ion-label position="floating">Quantity</ion-label>
+                                    <ion-input type="number" onkeypress="return event.charCode >= 48" min="0" placeholder="e.g. 2" ngModel name="qty"></ion-input>
+                                </ion-item>
+                                <div class="add-btn">
+                                    <ion-button type="submit" fill="outline" color="success">Add</ion-button>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-item>
+                </div>
+
+                <ion-card-content>
+                    {{product.product_name}}
+                </ion-card-content>
+            </form>
         </ion-card>
 
-        <ion-card>
-            <div class="top-container">
-                <ion-item>
-                    <div class="discount-div" style="visibility: visible;">
-                        <p>20%</p>
-                    </div>
-                    <div class="image-div"><img src="./../../assets/beverages/Yamama Rose Water 750ml.jpg" alt=""></div>
-                    <div class="info-div">
-                        <div class="pricing-div">
-                            <ion-label>15,000 L.L.</ion-label>
-                        </div>
-                        <div class="quantity-div">
-                            <ion-item>
-                                <ion-label position="floating">Quantity</ion-label>
-                                <ion-input type="number" onkeypress="return event.charCode >= 48" min="0" placeholder="e.g. 2"></ion-input>
-                            </ion-item>
-                        </div>
-                    </div>
-                </ion-item>
-            </div>
-
-            <ion-card-content>
-                Yamama Rose Water 750ml
-            </ion-card-content>
-        </ion-card>
-
-        <ion-card>
-            <div class="top-container">
-                <ion-item>
-                    <div class="discount-div" style="visibility: hidden;">
-                        <p>20%</p>
-                    </div>
-                    <div class="image-div"><img src="./../../assets/beverages/Cortas Rose Water 300ml.jpg" alt=""></div>
-                    <div class="info-div">
-                        <div class="pricing-div">
-                            <ion-label>15,000 L.L.</ion-label>
-                        </div>
-                        <div class="quantity-div">
-                            <ion-item>
-                                <ion-label position="floating">Quantity</ion-label>
-                                <ion-input type="number" onkeypress="return event.charCode >= 48" min="0" placeholder="e.g. 2"></ion-input>
-                            </ion-item>
-                        </div>
-                    </div>
-                </ion-item>
-            </div>
-
-            <ion-card-content>
-                Cortas Rose Water 300ml
-            </ion-card-content>
-        </ion-card>
     </div>
 </ion-content>
 

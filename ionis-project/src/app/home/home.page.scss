@@ -3,6 +3,16 @@ ion-content {
     // position: relative;
 }
 
+.spinner-container {
+    background-color: rgba(0, 0, 0, 0.14);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
 #container {
     text-align: center;
     position: absolute;
