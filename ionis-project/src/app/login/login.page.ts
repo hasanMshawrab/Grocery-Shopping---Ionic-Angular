@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { api } from '../services/api';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +11,37 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private alertController: AlertController, private api:api) { }
 
   ngOnInit() {
   }
 
-  public login(){
-    this.router.navigate(["home"]);
+  async showAlert(message: string){
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      // subHeader: 'Sub header',
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  onSubmit(form: NgForm) {
+    console.log(form.value);
+    var loginInfo = form.value;
+    if(form.value.user_name == "" || form.value.password == ""){
+      this.showAlert("please fill username and password!")
+    }else{
+      this.api.login(loginInfo).subscribe(response=>{
+        console.log(response);
+        if(response[0] == true){
+          this.router.navigate(["home"]);
+        }else{
+          this.showAlert("Username or password is wrong!")
+        }
+      });
+    }
+
   }
 
   public signUp(){

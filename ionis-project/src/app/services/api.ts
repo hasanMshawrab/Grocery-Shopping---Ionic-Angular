@@ -18,6 +18,19 @@ export interface Product{
 export interface clickedCategory{
     category_name: string
 }
+
+export interface NewAccount{
+    first_name: string,
+    last_name: string,
+    email: string,
+    user_name: string,
+    password: string
+}
+
+export interface LoginInfo{
+    user_name: string,
+    password: string
+}
   
 
 @Injectable({
@@ -58,5 +71,13 @@ export class api{
 
     search(category: string, word:string){
         return this.http.get<[Product]>(this.base_url + "search.php?category=" + category + "&word=" + word);
+    }
+
+    setNewAccount(newAccount: NewAccount){
+        return this.http.post(this.base_url + "setNewAccount.php", newAccount);
+    }
+
+    login(loginInfo: LoginInfo){
+        return this.http.post(this.base_url + "Login.php", loginInfo);
     }
 }
