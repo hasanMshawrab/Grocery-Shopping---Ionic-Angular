@@ -5,7 +5,7 @@ include("connection.php");
 
 $category = $_GET["category"];
 
-$query = "SELECT * FROM products WHERE category=? ORDER BY price ASC";
+$query = "SELECT * FROM products WHERE category=? ORDER BY final_price ASC";
 $stmt = $connection->prepare($query);
 $stmt->bind_param('s', $category);
 $stmt->execute();

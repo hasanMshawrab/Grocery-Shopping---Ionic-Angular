@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { api, Product, clickedCategory } from '../services/api';
+import { Router } from '@angular/router';
+import { api, Product, clickedCategory, AddToMyCart } from '../services/api';
 
 @Component({
   selector: 'app-products',
@@ -11,8 +12,9 @@ export class ProductsPage implements OnInit {
 
   products: [Product];
   clickedCategory: clickedCategory;
+  addToMyCart:AddToMyCart;
 
-  constructor(private api: api) { }
+  constructor(private api: api, private router: Router) { }
 
   ngOnInit() {
     var category = "";
@@ -32,6 +34,19 @@ export class ProductsPage implements OnInit {
   onSubmit(form: NgForm, id: string) {
     console.log(id);
     console.log(form.value);
+    var cart = {"user_name": "charbel", "product_id": id, "quantity": form.value.qty};
+    this.addToMyCart = cart;
+    // this.addToMyCart.user_name = "";
+    // this.addToMyCart.product_id = id;
+    // this.addToMyCart.quantity = form.value.qty;
+
+    this.api.addToMyCart(this.addToMyCart).subscribe(response=>{
+      console.log(response);
+    });
+  }
+
+  myCart(){
+    this.router.navigate(["my-cart"]);
   }
 
   selected($event) {

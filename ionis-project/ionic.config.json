@@ -1,7 +1,10 @@
 {
   "name": "ionis-project",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
   },
   "type": "angular"
 }

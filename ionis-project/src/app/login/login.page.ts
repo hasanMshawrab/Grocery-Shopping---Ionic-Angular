@@ -11,7 +11,7 @@ import { api } from '../services/api';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router, private alertController: AlertController, private api:api) { }
+  constructor(private router: Router, private alertController: AlertController, private api:api) {}
 
   ngOnInit() {
   }
@@ -35,6 +35,7 @@ export class LoginPage implements OnInit {
       this.api.login(loginInfo).subscribe(response=>{
         console.log(response);
         if(response[0] == true){
+          // this.storage.setItem("user_name", form.value.user_name);
           this.router.navigate(["home"]);
         }else{
           this.showAlert("Username or password is wrong!")

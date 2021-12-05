@@ -31,6 +31,12 @@ export interface LoginInfo{
     user_name: string,
     password: string
 }
+
+export interface AddToMyCart{
+    user_name: string,
+    product_id: string,
+    quantity: string
+}
   
 
 @Injectable({
@@ -80,4 +86,9 @@ export class api{
     login(loginInfo: LoginInfo){
         return this.http.post(this.base_url + "Login.php", loginInfo);
     }
+
+    addToMyCart(addToMyCart:AddToMyCart){
+        return this.http.post(this.base_url + "addToMyCart.php", addToMyCart);
+    }
+
 }

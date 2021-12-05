@@ -31,6 +31,9 @@ export class HomePage {
     this.router.navigate(["products"]);
   }
   
+  myCart(){
+    this.router.navigate(["my-cart"]);
+  }
 }
 
 
