@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { api, Product, clickedCategory, AddToMyCart } from '../services/api';
+import { Storage } from '@ionic/storage-angular';
+import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver'
+import { Profile } from '../services/profile';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +17,21 @@ export class ProductsPage implements OnInit {
   clickedCategory: clickedCategory;
   addToMyCart:AddToMyCart;
 
-  constructor(private api: api, private router: Router) { }
+  private _storage: Storage | null = null;
+
+  constructor(private storage:Storage,private api: api, private router: Router, private profile:Profile) { 
+    this.init();
+  }
+
+  async init() {
+    const storage = await this.storage.create();    
+    await this.storage.defineDriver(CordovaSQLiteDriver);
+    this._storage = storage;
+  }
+
+  presentActionSheet(){
+    this.profile.presentActionSheet();
+  }
 
   ngOnInit() {
     var category = "";
@@ -31,18 +48,24 @@ export class ProductsPage implements OnInit {
 
   }
 
-  onSubmit(form: NgForm, id: string) {
-    console.log(id);
-    console.log(form.value);
-    var cart = {"user_name": "charbel", "product_id": id, "quantity": form.value.qty};
+  
+
+  async onSubmit(form: NgForm, id: string) {
+    const user_name = await this._storage.get('user_name');
+    var cart = {"user_name": user_name, "product_id": id, "quantity": form.value.qty};
     this.addToMyCart = cart;
-    // this.addToMyCart.user_name = "";
-    // this.addToMyCart.product_id = id;
-    // this.addToMyCart.quantity = form.value.qty;
 
     this.api.addToMyCart(this.addToMyCart).subscribe(response=>{
       console.log(response);
     });
+
+    if(form.value.qty == 0 || form.value.qty == null){
+      document.getElementById(id).innerHTML = "";
+    }else{
+       document.getElementById(id).innerHTML = "qty: " + form.value.qty;
+    }
+   
+
   }
 
   myCart(){
@@ -102,6 +125,18 @@ export class ProductsPage implements OnInit {
 
     });
   }
+
+  // async checkQty(id:string){
+  //   console.log("am here");
+    
+  //   var val = await this._storage.get('1');
+  //   console.log("I am the value: " + val);
+  //   // if(val == null || val == '0'){
+  //   //   return false;
+  //   // }else{
+  //   //   return true;
+  //   // }
+  // }
 }
 function CrossOrigin(arg0: string) {
   throw new Error('Function not implemented.');

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Profile } from '../services/profile';
 
 @Component({
   selector: 'app-my-cart',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyCartPage implements OnInit {
 
-  constructor() { }
+  constructor(private profile:Profile) { }
+
+  presentActionSheet(){
+    this.profile.presentActionSheet();
+  }
 
   ngOnInit() {
   }

@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { api, NewAccount } from '../services/api';
+import { Storage } from '@ionic/storage-angular';
+import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver'
 
 @Component({
   selector: 'app-create-account',
@@ -11,10 +13,15 @@ import { api, NewAccount } from '../services/api';
 })
 export class CreateAccountPage implements OnInit {
 
-  constructor(private alertController: AlertController, private api:api, private router:Router) { }
+  private _storage: Storage | null = null;
+
+  constructor(private storage:Storage,private alertController: AlertController, private api:api, private router:Router) { }
 
 
-  ngOnInit() {
+  async ngOnInit() {
+    const storage = await this.storage.create();    
+    await this.storage.defineDriver(CordovaSQLiteDriver);
+    this._storage = storage;
   }
 
   async showAlert(message: string){
@@ -36,6 +43,7 @@ export class CreateAccountPage implements OnInit {
       this.api.setNewAccount(newAccount).subscribe(response=>{
         console.log(response);
         if(response[0] == true){
+          this._storage.set('user_name', form.value.user_name);
           this.router.navigate(["home"]);
         }else{
           this.showAlert("username already exist, please choose another one!")
