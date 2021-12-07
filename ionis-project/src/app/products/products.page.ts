@@ -50,9 +50,9 @@ export class ProductsPage implements OnInit {
 
   
 
-  async onSubmit(form: NgForm, id: string) {
+  async onSubmit(form: NgForm, id: string, final_price:string) {
     const user_name = await this._storage.get('user_name');
-    var cart = {"user_name": user_name, "product_id": id, "quantity": form.value.qty};
+    var cart = {"user_name": user_name, "product_id": id, "final_price": final_price,"quantity": form.value.qty};
     this.addToMyCart = cart;
 
     this.api.addToMyCart(this.addToMyCart).subscribe(response=>{

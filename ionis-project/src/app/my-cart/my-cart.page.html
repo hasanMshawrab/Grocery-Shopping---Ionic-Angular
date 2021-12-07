@@ -8,8 +8,36 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+
+    <ion-list>
+        <ion-list-header>
+            My cart
+        </ion-list-header>
+
+        <ion-item *ngFor="let myCart of _myCart">
+            <ion-avatar slot="start">
+                <img src="./../../assets/{{myCart.image}}" style="width:50%;">
+            </ion-avatar>
+            <ion-label>
+                <h2>{{myCart.product_name}}</h2>
+                <h3>Quantity: {{myCart.quantity}}</h3>
+                <p>Price: {{myCart.final_price}}</p>
+            </ion-label>
+        </ion-item>
+
+    </ion-list>
 
 
+    <div class="footer" *ngIf="_bool">
+        <ion-label style="margin-bottom: 5px;"><b>Total Price:</b> {{_total}} L.L.</ion-label>
+        <ion-label style="margin-bottom: 5px;"><b>Payment Method:</b> On Cash</ion-label>
+        <ion-label style="margin-bottom: 5px;"><b>Loaction:</b> Hotel</ion-label>
+        <ion-button style="height: 40px;" color="success" (click)="showAlert()">Checkout</ion-button>
+    </div>
+
+    <div class="footer" *ngIf="!_bool">
+        <h1>No items yet on your cart!</h1>
+    </div>
 
 </ion-content>

@@ -10,7 +10,7 @@ export interface Product{
     price: Int32Array,
     final_price: Int32Array,
     discount: Int32Array,
-    discount_price: Int32Array,
+    // discount_price: Int32Array,
     visibility: string,
     image: string
 }
@@ -35,7 +35,17 @@ export interface LoginInfo{
 export interface AddToMyCart{
     user_name: string,
     product_id: string,
+    final_price: string,
     quantity: string
+}
+
+export interface MyCart{
+    user_name: string,
+    product_id: string,
+    product_name: string,
+    final_price: string,
+    quantity: string,
+    image: string
 }
   
 
@@ -91,4 +101,11 @@ export class api{
         return this.http.post(this.base_url + "addToMyCart.php", addToMyCart);
     }
 
+    getMyCart(user_name:string){
+        return this.http.get<[MyCart]>(this.base_url + "myCart.php?user_name=" + user_name);
+    }
+
+    clearMyCart(user_name:string){
+        return this.http.get(this.base_url + "clearMyCart.php?user_name=" + user_name);
+    }
 }
